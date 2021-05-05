@@ -10,8 +10,11 @@ export const Requests = () => {
             }
         </ul>
     `
+    return html
 }
 
-const convertRequestToListElement = () => {
-    // define me!
+const convertRequestToListElement = (request) => {
+    return `
+        <li>${request.description}</li>
+    `
 }
