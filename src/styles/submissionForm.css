@@ -1,0 +1,17 @@
+.button {
+    background-color: rgb(71, 80, 155);
+    padding: .5rem .4rem;
+    color: #404040;
+	font-family: "Comfortaa", Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.5;
+    color: rgb(250, 250, 214);
+    margin-top: 2rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+    margin-top: .5rem;
+}
