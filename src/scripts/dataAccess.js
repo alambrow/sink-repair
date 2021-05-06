@@ -1,5 +1,5 @@
 const applicationState = {
-    requests: {}
+    requests: []
 }
 
 const API = "http://localhost:8088"
