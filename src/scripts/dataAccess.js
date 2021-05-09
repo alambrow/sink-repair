@@ -19,6 +19,9 @@ export const getRequests = () => {
     return [...applicationState.requests]
 }
 
+
+const mainContainer = document.querySelector("#container")
+
 // HTTP Request (Post) (Also: GET, PUT, DELETE)
 export const sendRequest = (userServiceRequest) => {
     const fetchOptions = {
@@ -33,6 +36,6 @@ export const sendRequest = (userServiceRequest) => {
     return fetch(`${API}/requests`, fetchOptions)
         .then(response => response.json())
         .then(() => {
-
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }

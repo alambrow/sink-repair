@@ -12,4 +12,12 @@ const render = () => {
     )
 }
 
+// event listener for change of state event for input form
+mainContainer.addEventListener(
+    "stateChanged",
+    customEvent => {
+        render()
+    }
+)
+
 render()
