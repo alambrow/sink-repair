@@ -1,5 +1,7 @@
 const applicationState = {
-    requests: []
+    plumbers: [],
+    requests: [],
+    completions: []
 }
 
 const API = "http://localhost:8088"
@@ -17,6 +19,20 @@ export const fetchRequests = () => {
 
 export const getRequests = () => {
     return [...applicationState.requests]
+}
+
+export const fetchPlumbers = () => {
+    return fetch(`${API}/plumbers`)
+    .then(response => response.json())
+    .then(
+        (serviceRequests) => {
+            applicationState.plumbers = serviceRequests
+        }
+    )
+}
+
+export const getPlumbers = () => {
+    return [...applicationState.plumbers]
 }
 
 
@@ -40,6 +56,35 @@ export const sendRequest = (userServiceRequest) => {
         })
 }
 
+// HTTP request to fetch completed projects
+export const fetchCompletions = () => {
+    return fetch(`${API}/completions`)
+        .then(response => response.json())
+        .then(
+            (completions) => {
+                applicationState.completions = completions
+            }
+        )
+}
+
+// HTTP request to save completed project in API through stateChanged event
+export const saveCompletion = (completedRequest) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(completedRequest)
+    }
+    return fetch(`${API}/completions`, fetchOptions)
+        .then(response => response.json())
+        .then(() => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}
+
+
+// HTTP Request to delete service request from database
 export const deleteRequest = (id) => {
     return fetch(`${API}/requests/${id}`, { method: "DELETE" })
         .then(
