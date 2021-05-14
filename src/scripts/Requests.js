@@ -33,6 +33,9 @@ const convertRequestToListElement = (request) => {
         </li>
     `
 }
+
+
+
 // event listener for dropdown selection event
 const mainContainer = document.querySelector("#container")
 
