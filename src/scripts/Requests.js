@@ -1,13 +1,29 @@
-import { getRequests, deleteRequest, getPlumbers, saveCompletion } from "./dataAccess.js"
+import { getRequests, deleteRequest, getPlumbers, saveCompletion, getCompletions } from "./dataAccess.js"
 
 // basic rendering function for submitted requests
 export const Requests = () => {
-    const requests = getRequests()
+    
+    const requestsArray = getRequests()
+    const completionsArray = getCompletions()
+
+    for (let i = 0; i < requestsArray.length; i++) {
+        for (let p = 0; p < completionsArray.length; p++) {
+            if(requestsArray[i].id === completionsArray[p].requestId) {
+                delete requestsArray[i]
+                break
+            }
+        }
+    }
+    
+    
 
     let html = `
         <ul>
             ${
-                requests.map(convertRequestToListElement).join("\n")
+                requestsArray.map(convertRequestToListElement).join("\n")
+            }
+            ${
+                completionsArray.map(convertCompletionToListElement).join("\n")
             }
         </ul>
     `
@@ -34,7 +50,13 @@ const convertRequestToListElement = (request) => {
     `
 }
 
-
+const convertCompletionToListElement = (completion) => {
+    return `
+    <li>
+    <strong>Service Order ${completion.id}</strong>, completed on ${completion.date_created}.
+    </li>
+    `
+}
 
 // event listener for dropdown selection event
 const mainContainer = document.querySelector("#container")
@@ -51,8 +73,7 @@ mainContainer.addEventListener(
                    2. plumberId
                    3. date_created
             */
-            const timestampUTC = Date.now()
-            const timestamp = new (timestampUTC).toLocaleDateString("en-US")
+            const timestamp = Date.now()
             const completion = { 
                 "requestId": parseInt(requestId),
                 "plumberId": parseInt(plumberId),

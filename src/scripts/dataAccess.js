@@ -6,6 +6,7 @@ const applicationState = {
 
 const API = "http://localhost:8088"
 
+// fetch request for (service) REQUESTS database
 export const fetchRequests = () => {
     return fetch(`${API}/requests`)
         .then(response => response.json())
@@ -21,6 +22,7 @@ export const getRequests = () => {
     return [...applicationState.requests]
 }
 
+// fetch request for PLUMBERS database
 export const fetchPlumbers = () => {
     return fetch(`${API}/plumbers`)
     .then(response => response.json())
@@ -35,6 +37,20 @@ export const getPlumbers = () => {
     return [...applicationState.plumbers]
 }
 
+// fetch request for COMPLETIONS database
+export const fetchCompletions = () => {
+    return fetch(`${API}/completions`)
+    .then(response => response.json())
+    .then(
+        (serviceRequests) => {
+            applicationState.completions = serviceRequests
+        }
+    )
+}
+
+export const getCompletions = () => {
+    return [...applicationState.completions]
+}
 
 const mainContainer = document.querySelector("#container")
 
@@ -56,16 +72,6 @@ export const sendRequest = (userServiceRequest) => {
         })
 }
 
-// HTTP request to fetch completed projects
-export const fetchCompletions = () => {
-    return fetch(`${API}/completions`)
-        .then(response => response.json())
-        .then(
-            (completions) => {
-                applicationState.completions = completions
-            }
-        )
-}
 
 // HTTP request to save completed project in API through stateChanged event
 export const saveCompletion = (completedRequest) => {

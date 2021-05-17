@@ -11,6 +11,7 @@ const render = () => {
         }
     )
 }
+render()
 
 // event listener for change of state event for input form
 mainContainer.addEventListener(
@@ -19,5 +20,3 @@ mainContainer.addEventListener(
         render()
     }
 )
-
-render()
