@@ -18,7 +18,7 @@ export const Requests = () => {
     
 
     let html = `
-        <ul>
+        <ul class="requestsList">
             ${
                 requestsArray.map(convertRequestToListElement).join("\n")
             }
@@ -35,7 +35,7 @@ const convertRequestToListElement = (request) => {
     const plumbers = getPlumbers()
     
     return `
-        <li>
+        <li class="openRequests">
         <strong>Service Order ${request.id}</strong>, needed by ${request.neededBy} at <em>${request.address} (address)</em>, for <strong>${request.description}</strong> with a max budget of $${request.budget}.
         
         <select class="plumbers" id="plumbers">
@@ -52,7 +52,7 @@ const convertRequestToListElement = (request) => {
 
 const convertCompletionToListElement = (completion) => {
     return `
-    <li>
+    <li class="completions">
     <strong>Service Order ${completion.id}</strong>, completed on ${completion.date_created}.
     </li>
     `

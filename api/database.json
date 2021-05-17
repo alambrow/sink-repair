@@ -43,7 +43,7 @@
     {
       "requestId": 8,
       "plumberId": 1,
-      "date_created": null,
+      "date_created": "5/17/2021",
       "id": 6
     },
     {
@@ -51,6 +51,12 @@
       "plumberId": 1,
       "date_created": "5/17/2021",
       "id": 7
+    },
+    {
+      "requestId": 10,
+      "plumberId": 1,
+      "date_created": "5/17/2021",
+      "id": 8
     }
   ],
   "requests": [
@@ -95,6 +101,20 @@
       "budget": "2",
       "neededBy": "2021-05-18",
       "id": 9
+    },
+    {
+      "description": "Basement is flooding",
+      "address": "My van down by the river",
+      "budget": "6",
+      "neededBy": "2021-05-17",
+      "id": 10
+    },
+    {
+      "description": "Basement is flooding",
+      "address": "My van down by the river",
+      "budget": "3",
+      "neededBy": "2021-05-18",
+      "id": 11
     }
   ]
 }

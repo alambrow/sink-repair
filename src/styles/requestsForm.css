@@ -1,0 +1,15 @@
+.requestsList {
+    list-style: none;
+    padding: 1rem;
+}
+
+.openRequests {
+    background-color: rgb(71, 80, 155, .95);
+    color: azure;
+    padding: .5rem;
+}
+
+.completions {
+    background-color: rgb(253, 85, 85, .8);
+    padding: .5rem;
+}

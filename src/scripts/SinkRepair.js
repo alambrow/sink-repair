@@ -9,7 +9,7 @@ export const SinkRepair = () => {
         </section>
 
         <section class="serviceRequests">
-            <h2>Service Requests</h2>
+            <h1>Service Requests</h1>
             ${Requests()}
         </section>
     `
