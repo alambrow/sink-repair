@@ -72,9 +72,10 @@ mainContainer.addEventListener(
                    1. requestId
                    2. plumberId
                    3. date_created
-            */
-            const timestamp = Date.now()
-            const completion = { 
+                   */
+                // refer to this date-stamping method!!!
+                const timestamp = (new Date()).toLocaleDateString('en-US')
+                const completion = { 
                 "requestId": parseInt(requestId),
                 "plumberId": parseInt(plumberId),
                 "date_created": timestamp
